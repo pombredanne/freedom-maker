@@ -22,7 +22,9 @@ rootfs: rootfs-$(ARCHITECTURE)
 rootfs-$(ARCHITECTURE): multistrap-configs/fbx-base.conf \
 		multistrap-configs/fbx-$(ARCHITECTURE).conf \
 		mk_dreamplug_rootfs \
-		bin/projects bin/finalize bin/projects-chroot
+		bin/projects bin/finalize bin/projects-chroot \
+		stamp-predepend
+
 	-sudo umount `pwd`/$(BUILD_DIR)/var/cache/apt/
 	sudo ./mk_dreamplug_rootfs $(ARCHITECTURE) multistrap-configs/fbx-$(ARCHITECTURE).conf
 	touch rootfs-$(ARCHITECTURE)
@@ -75,7 +77,7 @@ ifneq ($(DEVICE),/dev/sda)
 	sudo grub-install $(DEVICE)
 endif
 endif
-	dd if=$(DEVICE) of=$(IMAGE) bs=1M
+	dd if=$(DEVICE) of=$(IMAGE) bs=1M count=1900
 	@echo "Image copied.  The microSD card may now be removed."
 	tar -cjvf $(ARCHIVE) $(IMAGE)
 
@@ -84,13 +86,13 @@ endif
 #
 
 # install required files so users don't need to do it themselves.
-stamp-vbox-predepend: predepend
-	sudo sh -c "apt-get install debootstrap extlinux qemu-utils parted mbr kpartx python-cliapp apache2 virtualbox bzr python-sphinx"
+stamp-vbox-predepend: stamp-predepend
+	sudo sh -c "apt-get install debootstrap extlinux qemu-utils parted mbr kpartx python-cliapp apache2 virtualbox"
 	touch stamp-vbox-predepend
 
-predepend:
+stamp-predepend:
 	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial python-docutils"
-	touch predepend
+	touch stamp-predepend
 
 clean:
 # just in case I tried to build before plugging in the USB drive.
