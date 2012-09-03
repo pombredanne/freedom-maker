@@ -84,17 +84,12 @@ endif
 #
 
 # install required files so users don't need to do it themselves.
-stamp-predepend:
-	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial "
-	touch stamp-predepend
-
-stamp-vbox-predepend:
-	sudo sh -c "apt-get install debootstrap extlinux qemu-utils parted mbr kpartx python-cliapp apache2 virtualbox bzr python-sphinx python-cliapp"
+stamp-vbox-predepend: predepend
+	sudo sh -c "apt-get install debootstrap extlinux qemu-utils parted mbr kpartx python-cliapp apache2 virtualbox bzr python-sphinx"
 	touch stamp-vbox-predepend
 
-# install required files so users don't need to do it themselves.
 predepend:
-	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial"
+	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial python-docutils"
 	touch predepend
 
 clean:
