@@ -64,6 +64,16 @@ Today's image was produced with:
 
     http://wiki.debian.org/FreedomBox/Firmware
 
+  These are the users and their passwords:
+
+  - root :: freedom
+
+            The root user.
+
+  - fbx :: frdm
+
+           The normal user.  All the FreedomBox tools are stored in =/home/fbx=.
+
 * Verification
 
    You can validate that the files have been downloaded correctly and
@@ -72,7 +82,7 @@ Today's image was produced with:
 
    First, download my key:
 
-: $ gpg --keyserver hkp://keys.gnupg.net --recv-key D95C32042EE54FFDB25EC3489F2733F40928D23A
+    : $ gpg --keyserver hkp://keys.gnupg.net --recv-key D95C32042EE54FFDB25EC3489F2733F40928D23A
 
    Then, verify each file's signature:
 
