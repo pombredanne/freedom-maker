@@ -92,7 +92,7 @@
 #+source: verify-files
 #+headers: :results output
 #+begin_src sh :exports none
-ls -1 *sig
+ls -1 *bz2
 #+end_src
 #+name: gpg-verify
 #+begin_src python :results output :var files=verify-files :exports none
