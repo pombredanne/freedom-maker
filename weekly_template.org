@@ -8,7 +8,7 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
-* TODO Release Todos [0/9]                                         :noexport:
+* TODO Release Todos [0/10]                                         :noexport:
   SCHEDULED: <2012-09-23 Sun ++1w> DEADLINE: <2012-09-23 Sun ++1w>
   - State "DONE"       from "TODO"       [2012-09-21 Fri 07:34]
   :PROPERTIES:
@@ -27,7 +27,11 @@
 
 ** TODO List new [[*Changes][changes]]
 
-** TODO Update [[*Outstanding%20TODOs][outstanding TODOs]]
+** TODO Update TODOs [/]
+
+   - [ ] [[*Outstanding%20TODOs][outstanding TODOs]]
+
+   - [ ] [[http://wiki.debian.org/FreedomBox/BetaReleaseTodos][Wiki TODOs]]
 
 ** TODO Spell check!!!
 
@@ -159,6 +163,7 @@ ls -1 *bz2
 
    The UI layer.
 
+   - Links should work for remote clients.
    - Turn DHCP (for clients) on/off through Plinth
    - Select DHCP or Static IP in Plinth
    - Integrate basic OpenVPN settings into Plinth
