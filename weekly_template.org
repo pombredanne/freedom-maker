@@ -19,10 +19,6 @@
 
 ** TODO Change the [[Hi%20folks,%20welcome%20to%20the%20Nth%20weekly%20FreedomBox%20test%20image%20and][number]]
 
-** TODO Recompile [[weekly_template.org::74][gpg-verify]]
-
-** TODO Recompile [[weekly_template.org::88][checksums]]
-
 ** TODO List unresolved [[*Issues][issues]]
 
 ** TODO List new [[*Changes][changes]]
@@ -34,6 +30,10 @@
    - [ ] [[http://wiki.debian.org/FreedomBox/BetaReleaseTodos][Wiki TODOs]]
 
 ** TODO Spell check!!!
+
+** TODO Recompile [[weekly_template.org::74][gpg-verify]]
+
+** TODO Recompile [[weekly_template.org::88][checksums]]
 
 ** TODO Export the thing to text.
 
