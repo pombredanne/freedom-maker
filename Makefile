@@ -13,6 +13,7 @@ BOOTPOINT = $(MOUNTPOINT)/boot
 DEVICE = /dev/sdb
 TODAY = `date +%Y.%m%d`
 NAME = freedombox-unstable_$(TODAY)_$(BUILD)
+WEEKLY_DIR = torrent/freedombox-unstable_$(TODAY)
 IMAGE = $(NAME).img
 ARCHIVE = $(NAME).tar.bz2
 LOOP = /dev/loop0
@@ -92,7 +93,7 @@ stamp-vbox-predepend: stamp-predepend
 	touch stamp-vbox-predepend
 
 stamp-predepend:
-	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial python-docutils"
+	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial python-docutils buildtorrent"
 	touch stamp-predepend
 
 clean:
@@ -121,3 +122,10 @@ clean-card:
 	umount $(MOUNTPOINT)
 
 weekly-image: distclean clean-card plugserver-image virtualbox-image
+	mkdir $(WEEKLY_DIR)
+	mv *bz2 *sig $(WEEKLY_DIR)
+	cp weekly-image.org $(WEEKLY_DIR)/README.org
+	echo "When the README has been updated, hit Enter."
+	read X
+	mktorrent -a `cat torrent/trackers` -w `cat torrent/webseed` $(WEEKLY_DIR)
+	mv $(WEEKLY_DIR).torrent torrent/
