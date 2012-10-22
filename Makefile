@@ -93,7 +93,7 @@ stamp-vbox-predepend: stamp-predepend
 	touch stamp-vbox-predepend
 
 stamp-predepend:
-	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial python-docutils buildtorrent"
+	sudo sh -c "apt-get install multistrap qemu-user-static u-boot-tools git mercurial python-docutils mktorrent"
 	touch stamp-predepend
 
 clean:
