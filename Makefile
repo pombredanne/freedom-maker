@@ -122,7 +122,7 @@ clean-card:
 	umount $(MOUNTPOINT)
 
 weekly-image: distclean clean-card plugserver-image virtualbox-image
-	mkdir $(WEEKLY_DIR)
+	mkdir -p $(WEEKLY_DIR)
 	mv *bz2 *sig $(WEEKLY_DIR)
 	cp weekly-image.org $(WEEKLY_DIR)/README.org
 	echo "When the README has been updated, hit Enter."
