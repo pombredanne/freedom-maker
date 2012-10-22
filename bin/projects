@@ -27,6 +27,10 @@ if [ -n "$1" ]
 then
     homedir=$1
 fi
+if [ -n "$2" ]
+then
+    user=$2
+fi
 
 echo "Adding a few FreedomBox projects to $homedir."
 
@@ -41,4 +45,4 @@ ln -s $homedir/freedombuddy/issues $homedir/freedombuddy/publish/.
 ln -s $homedir/freedombuddy/wiki $homedir/freedombuddy/publish/.
 rst2html $homedir/README $homedir/README.html
 
-chown -R 1000:1000 $homedir
+chown -R $user:$user $homedir
