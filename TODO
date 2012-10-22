@@ -1,6 +1,6 @@
 - [ ] initial boot configuration improvements, as there are a few
-  things we really do want to defer to first boot, or at least make it
-  trivial to fix up per-system
+      things we really do want to defer to first boot, or at least make
+      it trivial to fix up per-system
 
 	- [X] ssh host keys
 	- [ ] root password
@@ -11,8 +11,10 @@
 	- babeld, loop-free distance-vector routing protocol
 	- tahoe-lafs, secure distributed filesystem
 - [ ] virtualbox should build with dreamplug configuration
+- [ ] mk_virtualbox_image and mk_dreamplug_rootfs should both reuse
+      the same environment variables.
 
-*** stuff to do for first feature release ***
+* stuff to do for first feature release *
 
   - [ ] pre-configured user interface
 	- [X] DHCP and HTTP servers on eth0 and/or eth1
@@ -22,4 +24,4 @@
   - [ ] openvpn server setup
   - [ ] the privoxy fork configured as a transparent proxy
   - [ ] plinth configured to at display these config details and to
-   control whatever is feasible
+        control whatever is feasible
