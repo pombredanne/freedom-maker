@@ -45,4 +45,4 @@ ln -s $homedir/freedombuddy/issues $homedir/freedombuddy/publish/.
 ln -s $homedir/freedombuddy/wiki $homedir/freedombuddy/publish/.
 rst2html $homedir/README $homedir/README.html
 
-chown -R $user:$user $homedir
+chown -R 1000:1000 $homedir
