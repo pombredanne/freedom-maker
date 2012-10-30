@@ -125,6 +125,7 @@ weekly-image: distclean clean-card plugserver-image virtualbox-image
 	mkdir -p $(WEEKLY_DIR)
 	mv *bz2 *sig $(WEEKLY_DIR)
 	cp weekly-image.org $(WEEKLY_DIR)/README.org
+	echo "http://betweennowhere.net/freedombox-images/$(WEEKLY_DIR)" > torrent/webseed
 	echo "When the README has been updated, hit Enter."
 	read X
 	mktorrent -a `cat torrent/trackers` -w `cat torrent/webseed` $(WEEKLY_DIR)

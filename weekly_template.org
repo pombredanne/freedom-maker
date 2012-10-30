@@ -3,16 +3,16 @@
 #+TITLE:     FreedomBox Weekly Image Report
 #+AUTHOR:    Nick Daly
 #+EMAIL:     nick.m.daly@gmail.com
-#+DATE:      2012-09-23 Sun
+#+DATE:      2012-10-21 Sun
 #+LANGUAGE:  en
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
-* TODO Release Todos [0/10]                                         :noexport:
-  SCHEDULED: <2012-09-23 Sun ++1w> DEADLINE: <2012-09-23 Sun ++1w>
-  - State "DONE"       from "TODO"       [2012-09-21 Fri 07:34]
+* TODO Release Todos [0/10]                                        :noexport:
+  SCHEDULED: <2012-11-04 Sun ++1w> DEADLINE: <2012-11-04 Sun ++1w -2d>
+  - State "DONE"       from "TODO"       [2012-10-28 Sun 16:18]
   :PROPERTIES:
-  :LAST_REPEAT: [2012-09-21 Fri 07:34]
+  :LAST_REPEAT: [2012-10-28 Sun 16:18]
   :END:
 
 ** TODO Change the [[weekly_template.org::6][date]]
@@ -76,11 +76,16 @@
 
   - root :: freedom
 
-            The root user.
+      The root user.
 
   - fbx :: frdm
 
-           The normal user.  All the FreedomBox tools are stored in =/home/fbx=.
+      The normal user.  All the FreedomBox tools are stored in =/home/fbx=.
+
+  - plinth :: config
+
+      The system maintenance user.  Generic FreedomBox maintenance will be
+      conducted by this user.
 
 * Verification
 
@@ -134,21 +139,19 @@ ls -1 *bz2
   return all_data
 #+end_src
 
-** ~freedombox-unstable_2012.0915_dreamplug-armel-card.img.tar.bz2.sig~
+** ~freedombox-unstable_2012.1021_dreamplug-armel-card.img.tar.bz2~
 
 | md5sum    | 317b93f3f3ea0b20b0be2ddc7f23e8c6                                                                                                 |
 | sha512sum | 54169616ca41934092e4a7eb68e72afcec8c7dc40d995802cfd18ceed4880c096fe76a541e790f8926244062ecb7b3c25e565b622704e26aad94cca05fbd6330 |
 
-** ~freedombox-unstable_2012.0915_virtualbox-i386-hdd.vdi.tar.bz2.sig~
+** ~freedombox-unstable_2012.1021_virtualbox-i386-hdd.vdi.tar.bz2~
 
 | md5sum    | ad8f344501954e9769d7aab88614b7f5                                                                                                 |
 | sha512sum | e82e5e788b33dab5699b7096e991d1f3468da3f21304e522a4079168adad61702d6aaca6e768ed47292fb7e0016e29f618d29de6c98f61bdfcda27f71754fa10 |
 
 * Issues
 
-
 * Changes
-
 
 * Outstanding TODOs
 
@@ -168,16 +171,14 @@ ls -1 *bz2
    - Select DHCP or Static IP in Plinth
    - Integrate basic OpenVPN settings into Plinth
    - Integrate Dnsmasq into Plinth
-   - Integrate FreedomBuddy into Plinth.
-   - Hook FreedomBuddy into SSH.
-   - Add more OpenVPN FreedomBuddy setup instructions.
 
 ** FreedomBox Privoxy: https://github.com/jvasile/freedombox-privoxy
 
    A privacy-focused web-proxy.
 
-   - Privoxy should use the released HTTPS Everywhere regexp ruleset.
    - Add enabling and disabling Privoxy to the Plinth UI.
+   - Integrate with the [[https://gitweb.torproject.org/https-everywhere.git/tree/HEAD:/utils][HTTPS Everywhere Checker]] and the [[https://github.com/hiviah/https-everywhere-checker][other HTTPS Everywhere
+     Checker]].
 
 ** FreedomBuddy: https://gitorious.org/freedombuddy/freedombuddy
 
@@ -185,6 +186,8 @@ ls -1 *bz2
 
    - Build an SSH-VPN connector.
    - Fix Outstanding FIXMEs
+   - Hook into Plinth.
+   - Add more OpenVPN FreedomBuddy setup instructions.
 
 ** Project Publish: https://gitorious.org/project-publish/project-publish
 
