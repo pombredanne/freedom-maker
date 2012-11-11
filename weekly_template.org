@@ -3,33 +3,39 @@
 #+TITLE:     FreedomBox Weekly Image Report
 #+AUTHOR:    Nick Daly
 #+EMAIL:     nick.m.daly@gmail.com
-#+DATE:      2012-10-21 Sun
+#+DATE:      2012-11-11 Sun
 #+LANGUAGE:  en
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
-* TODO Release Todos [0/10]                                        :noexport:
+* TODO Release Todos [6/9]                                        :noexport:
   SCHEDULED: <2012-11-04 Sun ++1w> DEADLINE: <2012-11-04 Sun ++1w -2d>
   - State "DONE"       from "TODO"       [2012-10-28 Sun 16:18]
   :PROPERTIES:
   :LAST_REPEAT: [2012-10-28 Sun 16:18]
   :END:
 
-** TODO Change the [[weekly_template.org::6][date]]
+** DONE Change the [[weekly_template.org::6][date]]
+   CLOSED: [2012-11-11 Sun 16:46]
 
-** TODO Change the [[Hi%20folks,%20welcome%20to%20the%20Nth%20weekly%20FreedomBox%20test%20image%20and][number]]
+** DONE Change the [[Hi%20folks,%20welcome%20to%20the%20Nth%20weekly%20FreedomBox%20test%20image%20and][number]]
+   CLOSED: [2012-11-11 Sun 16:47]
 
-** TODO List unresolved [[*Issues][issues]]
+** DONE List unresolved [[*Issues][issues]]
+   CLOSED: [2012-11-11 Sun 16:47]
 
-** TODO List new [[*Changes][changes]]
+** DONE List new [[*Changes][changes]]
+   CLOSED: [2012-11-11 Sun 16:47]
 
-** TODO Update TODOs [/]
+** DONE Update TODOs [2/2]
+   CLOSED: [2012-11-11 Sun 16:47]
 
-   - [ ] [[*Outstanding%20TODOs][outstanding TODOs]]
+   - [X] [[*Outstanding%20TODOs][outstanding TODOs]]
 
-   - [ ] [[http://wiki.debian.org/FreedomBox/BetaReleaseTodos][Wiki TODOs]]
+   - [X] [[http://wiki.debian.org/FreedomBox/BetaReleaseTodos][Wiki TODOs]]
 
-** TODO Spell check!!!
+** DONE Spell check!!!
+   CLOSED: [2012-11-11 Sun 16:48]
 
 ** TODO Recompile [[weekly_template.org::74][gpg-verify]]
 
@@ -39,7 +45,7 @@
 
 * Introduction
 
-  Hi folks, welcome to the Nth weekly FreedomBox test image and progress report.
+  Hi folks, welcome to the 17th weekly FreedomBox test image and progress report.
 
   These images include several FreedomBox-related projects.  The changes are
   changes made by project contributors in the last week that have made it into
@@ -112,8 +118,7 @@ ls -1 *bz2
 : $ gpg --verify freedombox-unstable_2012.0915_dreamplug-armel-card.img.tar.bz2.sig.sig freedombox-unstable_2012.0915_dreamplug-armel-card.img.tar.bz2.sig
 : $ gpg --verify freedombox-unstable_2012.0915_virtualbox-i386-hdd.vdi.tar.bz2.sig.sig freedombox-unstable_2012.0915_virtualbox-i386-hdd.vdi.tar.bz2.sig
 
-   The checksums for each file, useful for additional verification,
-   also follow.
+  The checksums for each file, useful for additional verification, also follow.
 #+name: checksums
 #+source: checksums
 #+begin_src python :var files=verify-files :exports none
@@ -151,7 +156,17 @@ ls -1 *bz2
 
 * Issues
 
+  - None known so far.  Please report.
+
 * Changes
+
+  - FBX Privoxy uses the latest (3.0) series from the EFF.  Thanks Ram, for
+    putting these changes together.
+
+  - [[backports.debian.org]] updated its python-cliapp version, so we're now using
+    the upstream vmdebootstrap version.
+
+  - ExMachina removed from Plinth and split out into its own repository again.
 
 * Outstanding TODOs
 
@@ -160,6 +175,14 @@ ls -1 *bz2
    The FBX image build tool.
 
    - The setup process generates GPG keys for user.
+
+     - Consider reworking the [[http://lists.gnupg.org/pipermail/gnupg-users/2003-March/017376.html][batch script]] for this purpose.
+
+       - What about licensing?
+
+     - How do we guarantee sufficient random data?  Maybe somediddly
+       like: ~wget -m -k -K -E -Q 10m -l 10 -w 5s wiki.debian.org~
+
    - Setup generates GPG and SSL keys for the box itself.
 
 ** Plinth: https://github.com/nickdaly/plinth
@@ -171,6 +194,10 @@ ls -1 *bz2
    - Select DHCP or Static IP in Plinth
    - Integrate basic OpenVPN settings into Plinth
    - Integrate Dnsmasq into Plinth
+
+** ExMachina: http://gitorious.org/exmachina/exmachina
+
+   - Apply patches from [[betweennowhere.net/blog]].
 
 ** FreedomBox Privoxy: https://github.com/jvasile/freedombox-privoxy
 
