@@ -41,21 +41,21 @@ dpkg --install /sourcecode/*.deb
 
 mkdir /tmp/initrd-repack
 (cd /tmp/initrd-repack ; \
-    zcat /boot/initrd.img-3.2.0-3-kirkwood | cpio -i ; \
+    zcat /boot/initrd.img-3.2.0-4-kirkwood | cpio -i ; \
     rm -f conf/param.conf ; \
     find . | cpio --quiet -o -H newc | \
-	gzip -9 > /boot/initrd.img-3.2.0-3-kirkwood )
+	gzip -9 > /boot/initrd.img-3.2.0-4-kirkwood )
 rm -rf /tmp/initrd-repack
 
 (cd /boot ; \
-    cp /usr/lib/linux-image-3.2.0-3-kirkwood/kirkwood-dreamplug.dtb dtb ; \
-    cat vmlinuz-3.2.0-3-kirkwood dtb >> temp-kernel ; \
-    mkimage -A arm -O linux -T kernel -n 'Debian kernel 3.2.0-3-kirkwood' \
+    cp /usr/lib/linux-image-3.2.0-4-kirkwood/kirkwood-dreamplug.dtb dtb ; \
+    cat vmlinuz-3.2.0-4-kirkwood dtb >> temp-kernel ; \
+    mkimage -A arm -O linux -T kernel -n 'Debian kernel 3.2.0-4-kirkwood' \
 	-C none -a 0x8000 -e 0x8000 -d temp-kernel uImage ; \
     rm -f temp-kernel ; \
     mkimage -A arm -O linux -T ramdisk -C gzip -a 0x0 -e 0x0 \
-	-n 'Debian ramdisk 3.2.0-3-kirkwood' \
-	-d initrd.img-3.2.0-3-kirkwood uInitrd )
+	-n 'Debian ramdisk 3.2.0-4-kirkwood' \
+	-d initrd.img-3.2.0-4-kirkwood uInitrd )
 
 # Establish an initial root password
 echo "Set root password to $rootpassword"
