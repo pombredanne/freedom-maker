@@ -42,10 +42,8 @@
 ** TODO Recompile [[weekly_template.org::88][checksums]]
 
 ** TODO Export the thing to text.
-
+** TODO Export to HTML
 * Introduction
-
-  Hi folks, welcome to the 17th weekly FreedomBox test image and progress report.
 
   These images include several FreedomBox-related projects.  The changes are
   changes made by project contributors in the last week that have made it into
@@ -156,17 +154,7 @@ ls -1 *bz2
 
 * Issues
 
-  - None known so far.  Please report.
-
 * Changes
-
-  - FBX Privoxy uses the latest (3.0) series from the EFF.  Thanks Ram, for
-    putting these changes together.
-
-  - [[backports.debian.org]] updated its python-cliapp version, so we're now using
-    the upstream vmdebootstrap version.
-
-  - ExMachina removed from Plinth and split out into its own repository again.
 
 * Outstanding TODOs
 
