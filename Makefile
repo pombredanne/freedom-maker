@@ -27,7 +27,8 @@ rootfs-$(ARCHITECTURE): multistrap-configs/fbx-base.conf \
 		stamp-predepend
 
 	-sudo umount `pwd`/$(BUILD_DIR)/var/cache/apt/
-	ln -sf source/etc/fstab-$(DESTINATION) source/etc/fstab
+	ln -sf fstab-$(DESTINATION) fstab
+	mv fstab source/etc
 	sudo ./mk_dreamplug_rootfs $(ARCHITECTURE) multistrap-configs/fbx-$(ARCHITECTURE).conf
 	touch rootfs-$(ARCHITECTURE)
 
