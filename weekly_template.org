@@ -8,34 +8,28 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
-* TODO Release Todos [6/9]                                        :noexport:
+* TODO Release Todos [0/10]                                        :noexport:
   SCHEDULED: <2012-11-04 Sun ++1w> DEADLINE: <2012-11-04 Sun ++1w -2d>
   - State "DONE"       from "TODO"       [2012-10-28 Sun 16:18]
   :PROPERTIES:
   :LAST_REPEAT: [2012-10-28 Sun 16:18]
   :END:
 
-** DONE Change the [[weekly_template.org::6][date]]
-   CLOSED: [2012-11-11 Sun 16:46]
+** TODO Change the [[weekly_template.org::6][date]]
 
-** DONE Change the [[Hi%20folks,%20welcome%20to%20the%20Nth%20weekly%20FreedomBox%20test%20image%20and][number]]
-   CLOSED: [2012-11-11 Sun 16:47]
+** TODO Change the [[Hi%20folks,%20welcome%20to%20the%20Nth%20weekly%20FreedomBox%20test%20image%20and][number]]
 
-** DONE List unresolved [[*Issues][issues]]
-   CLOSED: [2012-11-11 Sun 16:47]
+** TODO List unresolved [[*Issues][issues]]
 
-** DONE List new [[*Changes][changes]]
-   CLOSED: [2012-11-11 Sun 16:47]
+** TODO List new [[*Changes][changes]]
 
-** DONE Update TODOs [2/2]
-   CLOSED: [2012-11-11 Sun 16:47]
+** TODO Update TODOs [0/2]
 
-   - [X] [[*Outstanding%20TODOs][outstanding TODOs]]
+   - [ ] [[*Outstanding%20TODOs][outstanding TODOs]]
 
-   - [X] [[http://wiki.debian.org/FreedomBox/BetaReleaseTodos][Wiki TODOs]]
+   - [ ] [[http://wiki.debian.org/FreedomBox/BetaReleaseTodos][Wiki TODOs]]
 
-** DONE Spell check!!!
-   CLOSED: [2012-11-11 Sun 16:48]
+** TODO Spell check!!!
 
 ** TODO Recompile [[weekly_template.org::74][gpg-verify]]
 
@@ -182,10 +176,13 @@ ls -1 *bz2
    - Select DHCP or Static IP in Plinth
    - Integrate basic OpenVPN settings into Plinth
    - Integrate Dnsmasq into Plinth
+   - Integrate FreedomBuddy into Plinth.
+   - Hook FreedomBuddy into SSH.
+   - Add more OpenVPN FreedomBuddy setup instructions.
 
 ** ExMachina: http://gitorious.org/exmachina/exmachina
 
-   - Apply patches from [[betweennowhere.net/blog]].
+   - Verify patches from [[betweennowhere.net/blog]].
 
 ** FreedomBox Privoxy: https://github.com/jvasile/freedombox-privoxy
 
