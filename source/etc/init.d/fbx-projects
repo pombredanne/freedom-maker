@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# Script to start FreedomBox-specific projects.
+
+### BEGIN INIT INFO
+# Provides:          fbx-projects
+# Default-Start:     1 2
+# Required-Start:    2
+# Required-Stop:
+# Default-Stop:
+# Short-Description: Start FreedomBox Projects
+### END INIT INFO
+
+RUNONCE=/var/freedombox/first-run
+
+if [ ! -e $RUNONCE ]
+then
+   exit
+fi
+
+function start-plinth {
+    su fbx -c "cd ~/plinth; bash start.sh"
+}
+
+function start-freedombuddy {
+    su fbx -c "cd ~/freedombuddy; bash start.sh"
+}
+
+case "$1" in
+    stop)
+        exit 0
+        ;;
+    start)
+        start-plinth
+        start-freedombuddy
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+esac
+
+exit 0

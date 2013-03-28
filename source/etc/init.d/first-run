@@ -11,7 +11,12 @@
 # Short-Description: Finish FBX install on DreamPlug
 ### END INIT INFO
 
-RUNONCE=/var/freedombox/installed
+RUNONCE=/var/freedombox/first-run
+
+if [ -e $RUNONCE ]
+then
+    exit
+fi
 
 function tweak-kernel {
     # Update the kernel unless requested otherwise.
@@ -64,6 +69,46 @@ function create-keys {
     echo "Done Creating Keys."
 }
 
+function configure-projects {
+    # configures projects for first boot.
+
+    echo "Configuring Projects..."
+    configure-plinth
+    configure-fbx-privoxy
+    configure-freedombuddy
+    echo "Done Configuring Projects."
+}
+
+function configure-plinth {
+    # configures plinth.
+
+    echo "  Configuring Plinth..."
+    su fbx -c "cd ~/plinth; make"
+    echo "  Done Configuring Plinth."
+}
+
+function configure-fbx-privoxy {
+    # configures FreedomBox's Privoxy
+
+    echo "  Configuring FreedomBox Privoxy..."
+    apt-get -y build-dep privoxy
+    apt-get -y install devscripts docbook-website logrotate \
+        python-beautifulsoup python-lxml quilt dpatch
+    su fbx -c "cd ~/freedombox-privoxy; make deb"
+    apt-get -y purge privoxy
+    dpkg -i /home/fbx/freedombox-privoxy/Debian/*.deb
+    service freedombox-privoxy restart
+    echo "  Done Configuring FreedomBox Privoxy."
+}
+
+function configure-freedombuddy {
+    # configures FreedomBuddy
+
+    echo "  Configuring FreedomBuddy..."
+    su fbx -c "cd ~/freedombuddy; make"
+    echo "  Done Configuring FreedomBuddy."
+}
+
 function mark-complete {
     # Prevent this initial configuration script from running again.
 
@@ -73,6 +118,8 @@ function mark-complete {
 }
 
 function remove-self {
+    # remove this file.
+
     echo "Removing Self..."
     rm -f /etc/init.d/first-run
     rm -f /etc/rc1.d/S01first-run
@@ -83,13 +130,9 @@ function remove-self {
     echo "Done Removing Self."
 }
 
-if [ -e $RUNONCE ]
-then
-    exit
-fi
-
 create-keys
 wifi-ap-setup
+configure-projects
 
 # the last things we do before quitting.
 tweak-kernel
