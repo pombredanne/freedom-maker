@@ -3,16 +3,19 @@
 #+TITLE:     FreedomBox Weekly Image Report
 #+AUTHOR:    Nick Daly
 #+EMAIL:     nick.m.daly@gmail.com
-#+DATE:      2012-11-11 Sun
+#+DATE:      2013-03-18 Mon
 #+LANGUAGE:  en
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 
-* TODO Release Todos [0/10]                                        :noexport:
-  SCHEDULED: <2012-11-04 Sun ++1w> DEADLINE: <2012-11-04 Sun ++1w -2d>
-  - State "DONE"       from "TODO"       [2012-10-28 Sun 16:18]
+Hi folks, welcome to the Nth weekly FreedomBox test image and progress report.
+These images are a way to test the current (incomplete) FreedomBox build.
+
+* TODO Release Todos [0/11]                                        :noexport:
+  SCHEDULED: <2013-03-10 Sun ++1w> DEADLINE: <2013-03-03 Sun ++1w -2d>
+  - State "DONE"       from "TODO"       [2013-02-26 Tue 20:22]
   :PROPERTIES:
-  :LAST_REPEAT: [2012-10-28 Sun 16:18]
+  :LAST_REPEAT: [2013-02-26 Tue 20:22]
   :END:
 
 ** TODO Change the [[weekly_template.org::6][date]]
@@ -22,6 +25,8 @@
 ** TODO List unresolved [[*Issues][issues]]
 
 ** TODO List new [[*Changes][changes]]
+
+** TODO List new [[*What%20Does%20it%20Do?][capabilities]]
 
 ** TODO Update TODOs [0/2]
 
@@ -36,7 +41,9 @@
 ** TODO Recompile [[weekly_template.org::88][checksums]]
 
 ** TODO Export the thing to text.
+
 ** TODO Export to HTML
+
 * Introduction
 
   These images include several FreedomBox-related projects.  The changes are
@@ -47,15 +54,21 @@
 
   The image is available at:
 
-      https://www.betweennowhere.net/tracker
+      https://download.internetmachines.co.uk/tracker/freedombox-images/
 
       https://www.betweennowhere.net/tracker/freedombox-unstable.torrent
 
       https://www.betweennowhere.net/tracker/freedombox-unstable.tar.bz2
 
+      https://www.betweennowhere.net/tracker/freedombox-images/
+
   Today's image was produced with:
 
       : $ make weekly-image
+
+* What Does it Do?
+
+  Right now, it serves as a privacy protecting proxy.
 
 * How do I try it out?
 
@@ -166,6 +179,22 @@ ls -1 *bz2
        like: ~wget -m -k -K -E -Q 10m -l 10 -w 5s wiki.debian.org~
 
    - Setup generates GPG and SSL keys for the box itself.
+   - Link network/interfaces per machine target
+   - Add fbx to /etc/sudoers
+   - Update the login message.
+   - Make Plinth Easy to Launch
+
+     - Make plinth in FM during image build process, or,
+
+     - Build some giant startup script to run Plinth that handles
+       everything:
+
+       - make-ing plinth
+       - other requirements
+
+       Plinth's own start.sh should handle its own local installation,
+       nothing else.  The big script should assume ~/exmachina is
+       available.
 
 ** Plinth: https://github.com/nickdaly/plinth
 
@@ -179,6 +208,25 @@ ls -1 *bz2
    - Integrate FreedomBuddy into Plinth.
    - Hook FreedomBuddy into SSH.
    - Add more OpenVPN FreedomBuddy setup instructions.
+   - Include missing dependencies.
+
+     - psmisc
+     - python2.7
+     - libpython2.7
+     - sudo
+
+   - Move =/build/= to =/vendor/=, update references in:
+
+     - plinth/start.sh
+     - plinth/Makefile
+
+   - Don't POST password on login fails.
+   - CherryPy HTTPRedirects Shouldn't Change Server names.
+   - Use Publish to publish Plinth's Source
+
+** ExMachina: http://gitorious.org/exmachina/exmachina
+
+   - Verify patches from [[betweennowhere.net/blog]].
 
 ** ExMachina: http://gitorious.org/exmachina/exmachina
 
