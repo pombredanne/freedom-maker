@@ -28,7 +28,6 @@ function start-freedombuddy {
 
 case "$1" in
     stop)
-        exit 0
         ;;
     start)
         start-plinth
@@ -36,6 +35,7 @@ case "$1" in
         ;;
     *)
         echo "Usage: $0 {start|stop}"
+        exit 1
 esac
 
 exit 0
