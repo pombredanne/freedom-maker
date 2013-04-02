@@ -22,11 +22,11 @@ These images are a way to test the current (incomplete) FreedomBox build.
 
 ** TODO Change the [[Hi%20folks,%20welcome%20to%20the%20Nth%20weekly%20FreedomBox%20test%20image%20and][number]]
 
+** TODO List new [[*What%20Does%20it%20Do?][capabilities]]
+
 ** TODO List unresolved [[*Issues][issues]]
 
 ** TODO List new [[*Changes][changes]]
-
-** TODO List new [[*What%20Does%20it%20Do?][capabilities]]
 
 ** TODO Update TODOs [0/2]
 
@@ -170,14 +170,6 @@ ls -1 *bz2
    The FBX image build tool.
 
    - The setup process generates GPG keys for user.
-
-     - Consider reworking the [[http://lists.gnupg.org/pipermail/gnupg-users/2003-March/017376.html][batch script]] for this purpose.
-
-       - What about licensing?
-
-     - How do we guarantee sufficient random data?  Maybe somediddly
-       like: ~wget -m -k -K -E -Q 10m -l 10 -w 5s wiki.debian.org~
-
    - Setup generates GPG and SSL keys for the box itself.
    - Link network/interfaces per machine target
    - Add fbx to /etc/sudoers
@@ -228,17 +220,11 @@ ls -1 *bz2
 
    - Verify patches from [[betweennowhere.net/blog]].
 
-** ExMachina: http://gitorious.org/exmachina/exmachina
-
-   - Verify patches from [[betweennowhere.net/blog]].
-
 ** FreedomBox Privoxy: https://github.com/jvasile/freedombox-privoxy
 
    A privacy-focused web-proxy.
 
    - Add enabling and disabling Privoxy to the Plinth UI.
-   - Integrate with the [[https://gitweb.torproject.org/https-everywhere.git/tree/HEAD:/utils][HTTPS Everywhere Checker]] and the [[https://github.com/hiviah/https-everywhere-checker][other HTTPS Everywhere
-     Checker]].
 
 ** FreedomBuddy: https://gitorious.org/freedombuddy/freedombuddy
 
