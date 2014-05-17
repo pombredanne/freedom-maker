@@ -52,4 +52,4 @@ apt-get install -y freedombox-setup
 
 rm /usr/sbin/policy-rc.d
 
-/usr/lib/freedombox/setup | tee > /var/log/freedombox-setup.log
+/usr/lib/freedombox/setup | tee /var/log/freedombox-setup.log
