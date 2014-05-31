@@ -1,0 +1,90 @@
+<!-- -*- mode: markdown; mode: auto-fill; fill-column: 80 -*- -->
+
+# Freedom Maker's Design
+
+Freedom Maker creates FreedomBoxes through a two step process:
+
+1. Building a generic image template that can be used to boot any number of
+boxen.
+
+2. Booting that image template on specific physical hardware to turn a system
+into your FreedomBox.
+
+<a href="overview-template.png"><img src="overview-template.png"
+style="max-width: 100%" /></a>
+
+<a href="overview-customize.png"><img src="overview-customize.png"
+style="max-width: 100%" /></a>
+
+## From Freedom Maker to Image Template
+
+Creating the image template is a three step process:
+
+1. The Makefile takes configuration options and runs `bin/mk_freedombox_image`
+with those configuration options.
+
+2. `mk_freedombox_image` interprets the config options and runs vmdebootstrap to
+generate the image.
+
+3. vmdebootstrap runs `bin/freedombox_customize` to customize the image.
+
+![](template-creation.png)
+
+### Freedom Maker's Internals
+
+Freedom Maker is essentially a vmdebootstrap wrapper consisting of three parts:
+
+1. `/Makefile`
+
+2. `bin/mk_freedombox_image`
+
+3. `bin/freedombox_customize`
+
+The `Makefile` contains recipes for each supported hardware target, currently
+including the DreamPlug, RaspberryPi, BeagleBone, and even VirtualBox Virtual
+Machine.  Each of these recipes sets the `MACHINE`, `ARCHITECTURE`, and
+`DESTINATION` variables which, in turn, control the type of image vmdebootstrap
+creates.  For more manual control over the generated image, try the `something`
+target.
+
+After the makefile interprets the recipe, it'll call `bin/mk_freedombox_image`
+which'll add more context data for vmdebootstrap like which Debian packages are
+installed by default and `MACHINE` specific settings.  From here, vmdebootstrap
+builds the image and, once complete, customizes the image with
+`bin/freedombox_customize`.
+
+freedombox_customize adds additional steps beyond what vmdebootstrap is capable
+of, like setting default passwords and adding repositories to
+`/etc/apt/sources.list`.  Finally, it installs the freedombox-setup package and
+runs `/usr/lib/freedombox/setup` which prepares the image template for its first
+run.  At this point, the image template is ready to be copied onto an SD card
+and booted for the first time.
+
+## From Image Template to Working FreedomBox
+
+Turning an image template into a working FreedomBox is a three step process:
+
+1. The image template (created in the previous section) is copied to an SD card
+or other bootable medium.
+
+2. The system is booted for the first time.
+
+3. During the first boot, the system configures itself and creates its own
+identity.
+
+4. When the initial configuration is complete, the system restarts.
+
+5. The FreedomBox is now customized and ready for general use.
+
+### The First Boot Process
+
+It's important to remember that each **unbooted** image is merely a template for
+any number of FreedomBoxes: no private key material exists until the image is
+actually booted.  Thanks to how the first boot process works, the image is not
+actually ready for the end user until the second boot.
+
+After the user copies the image to the SD card and turns on the system for the
+first time, the scripts in `/usr/lib/freedombox/first-run.d` are run.  These
+scripts configure and individually customize the box by generating keys and
+providing the box with its own identity.  After the first boot configuration is
+done, the box restarts and is ready for general use.

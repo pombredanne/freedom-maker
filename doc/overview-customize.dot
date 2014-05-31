@@ -1,0 +1,13 @@
+digraph g {
+    rankdir = LR;
+
+    subgraph cluster_make_fbx {
+        label = "make it your FreedomBox"
+        "copy image to SD card" -> "first boot" -> restart;
+        color = black;
+        rankdir = LR;
+    }
+
+    "image template" -> "copy image to SD card";
+    restart -> "My FreedomBox";
+}

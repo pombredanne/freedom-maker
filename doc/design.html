@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>design</title>
+
+</head>
+
+<body>
+
+<!-- -*- mode: markdown; mode: auto-fill; fill-column: 80 -*- -->
+
+<h1>Freedom Maker's Design</h1>
+
+<p>Freedom Maker creates FreedomBoxes thorugh a two step process:</p>
+
+<ol>
+<li><p>Building a generic image template that can be used to boot any number of
+boxen.</p></li>
+<li><p>Booting that image template on specific physical hardware to turn a
+plugserver into your FreedomBox.</p></li>
+</ol>
+
+<p><a href="overview-template.png"><img src="overview-template.png"
+style="max-width: 100%" /></a></p>
+
+<p><a href="overview-customize.png"><img src="overview-customize.png"
+style="max-width: 100%" /></a></p>
+
+<h2>From Freedom Maker to Image Template</h2>
+
+<p>Creating the image template is a three step process:</p>
+
+<ol>
+<li><p>The makefile takes configuration options and runs <code>bin/mk_freedombox_image</code>
+with those configuration options.</p></li>
+<li><p><code>mk_freedombox_image</code> interprets the config options and runs vmdebootstrap to
+generate the image.</p></li>
+<li><p>vmdebootstrap runs <code>bin/freedombox_customize</code> to customize the image.</p></li>
+</ol>
+
+<p><img src="template-creation.png" alt="" title="" /></p>
+
+<h3>Freedom Maker's Internals</h3>
+
+<p>Freedom Maker is essentially a vmdebootstrap wrapper consisting of three parts:</p>
+
+<ol>
+<li><p><code>/Makefile</code></p></li>
+<li><p><code>bin/mk_freedombox_image</code></p></li>
+<li><p><code>bin/freedombox_customize</code></p></li>
+</ol>
+
+<p>The <code>Makefile</code> contains recipes for each supported hardware target, currently
+including the DreamPlug, RaspberryPi, BeagleBone, and even VirtualBox Virtual
+Machine.  Each of these recipes sets the <code>MACHINE</code>, <code>ARCHITECTURE</code>, and
+<code>DESTINATION</code> variables which, in turn, control the type of image vmdebootstrap
+creates.  For more manual control over the generated image, try the <code>something</code>
+target.</p>
+
+<p>After the makefile interprets the recipe, it'll call <code>bin/mk_freedombox_image</code>
+which'll add more context data for vmdebootstrap like which Debian packages are
+installed by default and <code>MACHINE</code> specific settings.  From here, vmdebootstrap
+builds the image and, once complete, customizes the image with
+<code>bin/freedombox_customize</code>.</p>
+
+<p>freedombox_customize adds additional steps beyond what vmdebootstrap is capable
+of, like setting default passwords and adding repositories to
+<code>/etc/apt/sources.list</code>.  Finally, it installs the freedombox-setup package and
+runs <code>/usr/lib/freedombox/setup</code> which prepares the image template for its first
+run.  At this point, the image template is ready to be copied onto an SD card
+and booted for the first time.</p>
+
+<h2>From Image Template to Working FreedomBox</h2>
+
+<p>Turning an image template into a working FreedomBox is a three step process:</p>
+
+<ol>
+<li><p>The image template (created in the previous section) is copied to an SD card
+or other bootable medium.</p></li>
+<li><p>The system is booted for the first time.</p></li>
+<li><p>During the first boot, the system configures itself and creates its own
+identity.</p></li>
+<li><p>When the initial configuration is complete, the system restarts.</p></li>
+<li><p>The FreedomBox is now customized and ready for general use.</p></li>
+</ol>
+
+<h3>The First Boot Process</h3>
+
+<p>It's important to remember that each <strong>unbooted</strong> image is merely a template for
+any number of FreedomBoxes: no private key material exists until the image is
+actually booted.  Thanks to how the first boot process works, the image is not
+actually ready for the end user until the second boot.</p>
+
+<p>After the user copies the image to the SD card and turns on the system for the
+first time, the scripts in <code>/usr/lib/freedombox/first-run.d</code> are run.  These
+scripts configure and individually customize the box by generating keys and
+providing the box with its own identity.  After the first boot configuration is
+done, the box restarts and is ready for general use.</p>
+
+</body>
+</html>

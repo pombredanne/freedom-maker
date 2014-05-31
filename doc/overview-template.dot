@@ -1,0 +1,11 @@
+digraph g {
+    rankdir = LR;
+
+    subgraph cluster_make_template {
+        label = "make image template"
+        make -> "mk_freedombox_image" -> vmdebootstrap -> "freedombox_customize";
+        color = black;
+    }
+
+    "freedombox_customize" -> "image template";
+}
