@@ -27,7 +27,10 @@ There are a couple ways to use this system:
 
    B. A microSD card and adapter.  You can use the one from inside the
       DreamPlug.  You won't need a JTAG, but you will need to open the DreamPlug
-      and void the warranty.
+      and void the 30 day warranty.
+
+See https://gitorious.org/freedombox-todos/freedombox-todos for a list of
+current TODOs.
 
 # Warning!
 
