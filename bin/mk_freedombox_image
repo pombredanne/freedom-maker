@@ -121,4 +121,4 @@ sudo -H \
     --owner $OWNER \
     $extra_opts \
     $pkgopts \
-    | tee > $(dirname $IMAGE)/freedombox-make.log
+    | tee $(dirname $IMAGE)/freedombox-make.log
