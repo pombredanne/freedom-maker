@@ -120,4 +120,5 @@ sudo -H \
     --distribution $SUITE \
     --owner $OWNER \
     $extra_opts \
-    $pkgopts
+    $pkgopts \
+    | tee > $(dirname $IMAGE)/freedombox-make.log
