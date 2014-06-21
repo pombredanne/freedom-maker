@@ -32,8 +32,8 @@ vmdebootstrap_dir="${vendor_dir}/vmdebootstrap"
 MIRROR=http://cdn.debian.net/debian
 
 # Packages to install in all FreedomBox environments
-base_pkgs="apt base-files ifupdown initramfs-tools \
-logrotate module-init-tools netbase rsyslog udev debian-archive-keyring"
+base_pkgs="apt base-files debian-archive-keyring ifupdown \
+initramfs-tools logrotate module-init-tools netbase rsyslog udev"
 
 # Packages needed on the dreamplug
 dreamplug_pkgs="linux-image-kirkwood u-boot-tools u-boot"
@@ -42,7 +42,8 @@ dreamplug_pkgs="linux-image-kirkwood u-boot-tools u-boot"
 beaglebone_pkgs="u-boot-tools u-boot"
 
 # Packages needed for gui-based self-hosted development
-dev_pkgs="task-xfce-desktop emacs org-mode git mercurial iceweasel ca-certificates"
+dev_pkgs="ca-certificates emacs git iceweasel mercurial org-mode \
+task-xfce-desktop"
 
 echo Building $MACHINE FreedomBox for $ARCHITECTURE.
 
