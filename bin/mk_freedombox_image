@@ -33,7 +33,7 @@ MIRROR=http://cdn.debian.net/debian
 
 # Packages to install in all FreedomBox environments
 base_pkgs="apt base-files debian-archive-keyring ifupdown \
-initramfs-tools logrotate module-init-tools netbase rsyslog udev"
+initramfs-tools logrotate module-init-tools netbase rsyslog udev wget"
 
 # Packages needed on the dreamplug
 dreamplug_pkgs="linux-image-kirkwood u-boot-tools u-boot"
